@@ -1,0 +1,20 @@
+{
+  "name": "tribble-web",
+  "homepage": "https://github.com/rianby64/tribble-web",
+  "authors": [
+    "Andres Rios <rianby64@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "router3": "^0.0.8"
+  }
+}
