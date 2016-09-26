@@ -1,0 +1,19 @@
+{
+  "name": "tribble-web",
+  "version": "1.0.0",
+  "description": "Веб интерфейс для нового проекта",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rianby64/tribble-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rianby64/tribble-web/issues"
+  },
+  "homepage": "https://github.com/rianby64/tribble-web#readme"
+}
