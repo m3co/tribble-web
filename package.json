@@ -4,7 +4,10 @@
   "description": "Веб интерфейс для нового проекта",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "npm install",
+    "postinstall": "bower install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,7 @@
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
-    "gulp-htmlhint": "^0.3.1"
+    "gulp-htmlhint": "^0.3.1",
+    "gulp-sass": "^2.3.2"
   }
 }
