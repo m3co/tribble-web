@@ -4,12 +4,13 @@ const htmlhint = require("gulp-htmlhint");
 const eslint = require('gulp-eslint');
 const sass = require('gulp-sass');
 const connect = require('gulp-connect');
+const sassLint = require('gulp-sass-lint');
 
 const paths = {
   src: 'src', dst: 'dist',
   assetssrc: ['src/assets/*', 'src/assets/**/*'],
   assetsdst: 'dist/assets',
-  sasssrc: ['src/*.scss', 'src/**/*.scss'],
+  sasssrc: ['src/*.s+(a|c)ss', 'src/**/*.s+(a|c)ss'],
   htmlsrc: ['src/*.html', 'src/**/*.html'],
   jssrc: ['src/*.js', 'src/**/*.js']
 };
@@ -19,6 +20,13 @@ gulp.task('sass', function () {
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(paths.dst))
     .pipe(connect.reload());
+});
+
+
+gulp.task('sass-lint', function () {
+  return gulp.src(paths.sasssrc)
+    .pipe(sassLint())
+    .pipe(sassLint.format());
 });
 
 gulp.task('assets-copy', _ => {
@@ -58,7 +66,7 @@ gulp.task('js-build', ['js-eslint', 'js-copy']);
 gulp.task('watch', _ => {
   gulp.watch(paths.htmlsrc, ['html-build']);
   gulp.watch(paths.jssrc, ['js-build']);
-  gulp.watch(paths.sasssrc, ['sass']);
+  gulp.watch(paths.sasssrc, ['sass-lint', 'sass']);
   gulp.watch(paths.assetssrc, ['assets-copy']);
 });
 
@@ -74,6 +82,7 @@ gulp.task('default', [
   'assets-copy',
   'html-build',
   'js-build',
+  'sass-lint',
   'sass',
   'connect',
   'watch'
