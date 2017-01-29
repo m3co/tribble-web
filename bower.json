@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "router3": "latest",
-    "material-design-lite": "^1.2.1",
-    "customevent-polyfill": "^1.0.0"
+    "material-design-lite": "latest",
+    "pseudoimport-html": "latest"
   }
 }

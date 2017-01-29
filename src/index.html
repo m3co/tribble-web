@@ -49,32 +49,28 @@
     <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <script src="bower_components/webcomponentsjs/MutationObserver.js" async></script>
     <script src="bower_components/customevent-polyfill/customevent-polyfill.min.js"></script>
     <script src="bower_components/promise-polyfill/promise.min.js"></script>
     <script src="bower_components/fetch/fetch.js"></script>
-    <script src="bower_components/pseudoimport-html/pseudoimport-html.js" defer></script>
-    <script src="bower_components/router3/router3.js" defer></script>
+    <script src="bower_components/material-design-lite/material.min.js"></script>
+    <script src="bower_components/pseudoimport-html/fragment-mdl.js"></script>
+    <script src="bower_components/router3/router3.js"></script>
 
   </head>
   <body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
-        <pseudoimport-html src="shared/headerTop.html"></pseudoimport-html>
+      <header class="mdl-fragment demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600" src="shared/headerTop.html">
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-        <header class="demo-drawer-header">
-          <pseudoimport-html src="shared/header.html"></pseudoimport-html>
+        <header class="mdl-fragment demo-drawer-header" src="shared/header.html">
         </header>
-        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-          <pseudoimport-html src="shared/navigation.html"></pseudoimport-html>
+        <nav class="mdl-fragment demo-navigation mdl-navigation mdl-color--blue-grey-800" src="shared/navigation.html">
         </nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
-        <router3 src="components/home/index.html" hash=""></router3>
-        <router3 src="components/inbox/index.html" hash="inbox"></router3>
+        <div class="mdl-router3 mdl-fragment" src="components/home/index.html" hash=""></div>
+        <div class="mdl-router3 mdl-fragment" src="components/inbox/index.html" hash="inbox"></div>
       </main>
     </div>
-    <script src="bower_components/material-design-lite/material.min.js"></script>
   </body>
 </html>
