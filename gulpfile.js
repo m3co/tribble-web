@@ -5,6 +5,7 @@ const eslint = require('gulp-eslint');
 const sass = require('gulp-sass');
 const connect = require('gulp-connect');
 const sassLint = require('gulp-sass-lint');
+const gulpIf = require('gulp-if');
 
 const paths = {
   src: 'src', dst: 'dist',
@@ -15,13 +16,17 @@ const paths = {
   jssrc: ['src/*.js', 'src/**/*.js']
 };
 
+function isFixed(file) {
+  // Has ESLint fixed the file contents?
+  return file.eslint != null && file.eslint.fixed;
+}
+
 gulp.task('sass', function () {
   return gulp.src(paths.sasssrc)
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(paths.dst))
     .pipe(connect.reload());
 });
-
 
 gulp.task('sass-lint', function () {
   return gulp.src(paths.sasssrc)
@@ -50,9 +55,10 @@ gulp.task('html-copy', _ => {
 gulp.task('html-build', ['html-hint', 'html-copy']);
 
 gulp.task('js-eslint', _ => {
-  return gulp.src(paths.jssrc)
-    .pipe(eslint())
-    .pipe(eslint.format());
+  return gulp.src(paths.jssrc, { base: './' })
+    .pipe(eslint({fix: true}))
+    .pipe(eslint.format())
+    .pipe(gulpIf(isFixed, gulp.dest('./')));
 });
 
 gulp.task('js-copy', _ => {
